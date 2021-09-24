@@ -8,7 +8,7 @@ RSpec.describe 'flights index page' do
     @passenger1 = @flight1.passengers.create!(name: "John", age: 56)
     @passenger2 = @flight1.passengers.create!(name: "Sarah", age: 27)
     @passenger3 = @flight2.passengers.create!(name: "Jessica", age: 30)
-    @passenger4 = @flight2.passengers.create!(name: "Tony", age: 20)
+    @passenger4 = @flight2.passengers.create!(name: "Tony", age: 15)
 
     visit flights_path
   end
@@ -30,7 +30,6 @@ RSpec.describe 'flights index page' do
   end
 
   it 'has a link to remove a passenger' do
-    #save_and_open_page
     click_link "Remove #{@passenger1.name}"
     expect(current_path).to eq(flights_path)
     expect(page).to_not have_content(@passenger1.name)
